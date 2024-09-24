@@ -8,6 +8,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -22,13 +24,14 @@ public class Aula implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idAula;
-	private String nombreAula;
-	private int NumeroAula;
-	private int Capacidad;
+    private String nombreAula;
+    private String capacidad;
 	
-	/// una aula puede tener varios cursos relacion de 1  a varios
+	/// una aula puede tener varios cursos relacion de 
+	//1  a varios
 	
-	@OneToMany(mappedBy = "fkCurso")
-	private List<Curso> listaCurso = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "course_id")
+    private Curso curso;
 	
 }

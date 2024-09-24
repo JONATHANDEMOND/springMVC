@@ -7,8 +7,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -25,14 +23,10 @@ public class Profesor implements Serializable{
 	private int idProfesor;
 	@Column(name = "nombreProfesor", length= 50)
 	private String nombre;
-	@Column(name = "apellidoProfesor", length= 50)
-	private String apellido;
-	private String CorreoElectronico;
-	private String Especializacion;
+	private String apellidoProfesor;
+	private String correo;
+	private String especializacion;
 	
-	@ManyToOne
-	@JoinColumn(name="fkCursoProfesor")
-	private Curso fkProfesor;
 	
 
 }

@@ -21,18 +21,16 @@ public class Curso implements Serializable	 {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idCurso;
-	private String cursoNombre;
-	private String DescripcionCurso;
-	private int CreditosCurso;
+	 private  int idCurso;
+    private String cursoNombre;
+    private String descripcion;
+    private int creditos;
+
+    @OneToMany(mappedBy = "curso")
+    private List<Matricula> matriculas;
+
+    @OneToMany(mappedBy = "curso")
+    private List<Aula> aulas;
 	
-	@ManyToOne
-	@JoinColumn(name ="fkAulaCurso")
-	private Aula fkCurso;
-	
-	//un curso puede tener varios provesores 
-	
-	@OneToMany(mappedBy = "fkProfesor")
-	private List<Profesor> listaProfesor = new ArrayList<>();
 
 }
